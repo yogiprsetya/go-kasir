@@ -49,7 +49,7 @@ func handleCategoryByID(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
-		idStr := r.URL.Path[len("/api/kategori/"):]
+		idStr := r.URL.Path[len("/api/categories/"):]
 		id, err := strconv.Atoi(idStr)
 		if err != nil {
 			http.Error(w, "Invalid ID format", http.StatusBadRequest)
@@ -65,7 +65,7 @@ func handleCategoryByID(w http.ResponseWriter, r *http.Request) {
 
 		http.Error(w, "Category not found", http.StatusNotFound)
 	case "PUT":
-		idStr := r.URL.Path[len("/api/kategori/"):]
+		idStr := r.URL.Path[len("/api/categories/"):]
 		id, err := strconv.Atoi(idStr)
 
 		if err != nil {
@@ -92,7 +92,7 @@ func handleCategoryByID(w http.ResponseWriter, r *http.Request) {
 
 		http.Error(w, "Category not found", http.StatusNotFound)
 	case "DELETE":
-		idStr := r.URL.Path[len("/api/kategori/"):]
+		idStr := r.URL.Path[len("/api/categories/"):]
 		id, err := strconv.Atoi(idStr)
 
 		if err != nil {
