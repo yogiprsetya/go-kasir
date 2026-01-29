@@ -105,7 +105,9 @@ func handleCategoryByID(w http.ResponseWriter, r *http.Request) {
 				categories = append(categories[:i], categories[i+1:]...)
 
 				w.WriteHeader(http.StatusOK)
-				json.NewEncoder(w).Encode(map[string]string{"message": "Category deleted successfully"})
+				json.NewEncoder(w).Encode(map[string]string{
+					"message": "Category deleted successfully",
+				})
 				return
 			}
 		}

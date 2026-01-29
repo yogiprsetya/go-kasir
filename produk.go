@@ -103,7 +103,9 @@ func handleProductByID(w http.ResponseWriter, r *http.Request) {
 			if p.ID == id {
 				produk = append(produk[:i], produk[i+1:]...)
 				w.WriteHeader(http.StatusOK)
-				json.NewEncoder(w).Encode(map[string]string{"message": "Product deleted successfully"})
+				json.NewEncoder(w).Encode(map[string]string{
+					"message": "Product deleted successfully",
+				})
 				return
 			}
 		}
