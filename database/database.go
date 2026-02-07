@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	_ "github.com/jackc/pgx/v5/stdlib"
+	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
 func InitDB(connectionString string) (*sql.DB, error) {
