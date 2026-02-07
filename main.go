@@ -49,6 +49,14 @@ func main() {
 	categoryService := services.NewCategoryService(categoryRepo)
 	categoryHandler := handlers.NewCategoryHandler(categoryService)
 
+	trxRepo := repositories.NewTransactionRepository(db)
+	trxService := services.NewTransactionService(trxRepo)
+	trxHandler := handlers.NewTransactionHandler(trxService)
+
+	reportRepo := repositories.NewReportRepository(db)
+	reportService := services.NewReportService(reportRepo)
+	reportHandler := handlers.NewReportHandler(reportService)
+
 	// Product routes
 	http.HandleFunc("/api/product", productHandler.HandleProducts)
 	http.HandleFunc("/api/product/", productHandler.HandleProductById)
@@ -56,6 +64,12 @@ func main() {
 	// Category routes
 	http.HandleFunc("/api/category", categoryHandler.HandleCategory)
 	http.HandleFunc("/api/category/", categoryHandler.HandleCategoryById)
+
+	// Trx routes
+	http.HandleFunc("/api/checkout", trxHandler.HandleCheckout)
+
+	// Report routes
+	http.HandleFunc("/api/report", reportHandler.HandleReport)
 
 	fmt.Println("Server running on http://localhost:" + config.Port)
 	httpErr := http.ListenAndServe(":"+config.Port, nil)
